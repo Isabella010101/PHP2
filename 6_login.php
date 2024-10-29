@@ -23,16 +23,23 @@
         $nome = $_POST['nome'];
         $senha = $_POST['senha'];
 
-        // Abre o arquivo usuarios.txt para leitura
-        $arquivo = fopen('usuarios.txt', 'r');
+        // Abre o arquivo usuarios.txt para leitura e coloca esse arquivo aberto na variável
+        $arquivo = fopen('5usuarios.txt', 'r');
+        // colocar como falso, pois é uma questão de segurança. No momento que o código acessar o txt, ele entrará com um pé atrás, dizendo que é falso, até que se prove o contrário durante a comparação
         $login_sucesso = false;
 
         //lê cada linha do arquivo
+        //para verificar cada linha, precisaremos de um laço de repetição
+        // !== é diferente, a exclamação quer dizer o contrário daquilo q ela acompanha
+        //o while (enquanto)
         while (($linha = fgets($arquivo)) !== false) {
             //divide a linha pelo delimitador ";"
+            //list - ele vai separando por linha
+            //explode - separa a linha do antes do ; e dpois dele, acrescentando a primeira parte à variável usuário_arquivo e a segundo a outra variável
             list($usuario_arquivo, $senha_arquivo) = explode(';', trim($linha));
 
             //verifica se o nome e a senha correspondem aos valores no arquivo
+            // esta é a comparação
             if ($nome == $usuario_arquivo && $senha == $senha_arquivo) {
                 $login_sucesso = true;
                 break;

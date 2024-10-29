@@ -12,7 +12,8 @@ echo "<tr><th>Nome</th><th>Preço</th><th>Quantidade</th></tr>";
 foreach ($produtos as $produto) {
     echo "<tr>";
     echo "<td>" . $produto['nome'] . "</td>";
-    echo "<td>R$" . number_format($produto['preço'], 2, ',', '.') . "</td>";
+    //numer format é a padronização da moeda
+    echo "<td>R$" . number_format($produto['preco'], 2, ',', '.') . "</td>";
     echo "<td>" . $produto['quantidade'] . "</td>";
     echo "</tr>";
 }

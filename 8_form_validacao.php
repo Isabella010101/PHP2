@@ -28,12 +28,13 @@
         $mensagem = $_POST['mensagem'];
 
         // valida se os campos não estão vazios e o email é válido
-        if (!empty($nome) && !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($mensagem)) {
-            echo "<p style = 'color: green;'>Feedback enviado com sucesso!</p>";
+        if (empty($nome) && empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL) && empty($mensagem)) {
+            echo "<p style = 'color: red;'>Por favor, preencha todos os campos corretamente.<p/>";
         }
 
         else {
-            echo "<p style = 'color: red;'>Por favor, preencha todos os campos corretamente.<p/>"
+            
+            echo "<p style = 'color: green;'>Feedback enviado com sucesso!</p>";
         }
     }
     

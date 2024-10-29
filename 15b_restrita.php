@@ -1,9 +1,13 @@
 <?php
-// Página restrita (15b_restrita.php)
+// Página restrita (15b_restrita.php), somente o admin
+session_start();
 
 
-// Digitar PHP (1º Aqui)
-
+// verifica se o usuário está logado
+if (!isset($_SESSION['usuario'])) {
+    header("Location: 15a_sistema.php");
+    exit();
+}
 
 ?>
 

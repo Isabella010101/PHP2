@@ -7,7 +7,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "exercicio";
+$dbname = "exercicio9";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -34,8 +34,20 @@ if (isset($_GET['id'])) {
     }
 }
 
+//verifica se o formulário foi enviado para atualizar o cliente
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_POST['id'];
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
 
-// Digitar PHP + SQL (1º Aqui)
+    $sql = "UPDATE clientes SET nome = '$nome', email = '$email' WHERE id = '$id'";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "<p>Cliente atualizado com sucesso!</p>";
+    } else {
+        echo "<p>Erro ao atualizar cliente: " . $conn->error . "</p>";
+    }
+}
 
 
 ?>

@@ -14,8 +14,18 @@
 
     <?php
 
- 
-        // Digitar PHP (1º Aqui)
+        //verifica se o formulário foi enviado
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $diretorio_destino = 'uploads/';
+
+            //verifica se a pasta existe, caso n, cria a pasta
+            if (!is_dir($diretorio_destino)) {
+                mkdir($diretorio_destino, 0777, true);
+            }
+
+            $nome_arquivo = basename($_FILES['imagem']['name']);
+            $caminho_completo = $diretorio_destino . $nome_arquivo;
+        
 
 
         // Move o arquivo enviado para o diretório de destino
@@ -25,7 +35,7 @@
         } else {
             echo "<p>Erro ao fazer upload do arquivo.</p>";
         }
-    
+    }
     ?>
 </body>
 </html>
