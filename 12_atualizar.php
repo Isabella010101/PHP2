@@ -1,6 +1,8 @@
 <!-- Passar id via URL -->
-<!-- http://localhost/php-basico-out-2024/12_atualizar.php?id=1-->
-
+<!-- http://localhost/PHP2/12_atualizar.php?id=1-->
+<!-- utilizando esse url para abrir no usuário de alguém cadastrado para atualizar alguma informação
+ 
+-->
 
 <?php
 // Conecta ao banco de dados
@@ -40,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
 
+    // sql de atualização
     $sql = "UPDATE clientes SET nome = '$nome', email = '$email' WHERE id = '$id'";
 
     if ($conn->query($sql) === TRUE) {
